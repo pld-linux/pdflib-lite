@@ -43,6 +43,7 @@ BuildRequires:	automake
 BuildRequires:	libtool
 %{?with_perl:BuildRequires:	perl-devel >= 5}
 %{?with_python:BuildRequires:	python-devel >= 2}
+BuildRequires:	rpm-perlprov
 BuildRequires:	rpmbuild(macros) >= 1.754
 %{?with_tcl:BuildRequires:	tcl-devel >= 8.2}
 %{?with_system_zlib:BuildRequires:	zlib-devel >= 1.2.3}
