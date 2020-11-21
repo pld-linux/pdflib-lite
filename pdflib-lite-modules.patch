@@ -1,0 +1,40 @@
+--- PDFlib-Lite-7.0.5p3/bind/pdflib/java/Makefile.orig	2012-06-06 13:59:04.000000000 +0200
++++ PDFlib-Lite-7.0.5p3/bind/pdflib/java/Makefile	2020-11-18 21:27:58.221463946 +0100
+@@ -15,6 +15,7 @@
+ 
+ DEPLIBS		= $(BIND_PDFLIBLINK)
+ LIBS		= $(DEPLIBS)
++LDFLAGS         += -avoid-version -shared
+ INCLUDES	= $(PDFLIBINC) $(PDCORELIBINC) $(JAVAINCLUDE)
+ 
+ LANG_LIBDIR 	= $(DESTDIR)$(libdir)
+--- PDFlib-Lite-7.0.5p3/bind/pdflib/perl/Makefile.orig	2012-06-06 13:59:04.000000000 +0200
++++ PDFlib-Lite-7.0.5p3/bind/pdflib/perl/Makefile	2020-11-18 20:42:08.533026953 +0100
+@@ -8,6 +8,7 @@
+ 
+ DEPLIBS		= $(PDFLIBLINK)
+ LIBS		= $(DEPLIBS)
++LDFLAGS         += -avoid-version -shared
+ INCLUDES	= $(PDFLIBINC) $(PERLBOOLDEF) $(PERLINCLUDE)
+ # special CFLAGS, as -ansi is not working here.
+ PDFPEDANTIC	=
+--- PDFlib-Lite-7.0.5p3/bind/pdflib/python/Makefile.orig	2012-06-06 13:59:04.000000000 +0200
++++ PDFlib-Lite-7.0.5p3/bind/pdflib/python/Makefile	2020-11-18 20:42:49.736137070 +0100
+@@ -7,6 +7,7 @@
+ 
+ DEPLIBS		= $(PDFLIBLINK)
+ LIBS		= $(DEPLIBS)
++LDFLAGS         += -avoid-version -shared
+ INCLUDES	= $(PDFLIBINC) $(PYINCLUDE) $(PDCORELIBINC)
+ # special CFLAGS, as -ansi is not working here.
+ PDFPEDANTIC	= 
+--- PDFlib-Lite-7.0.5p3/bind/pdflib/tcl/Makefile.orig	2020-11-18 19:10:38.999432975 +0100
++++ PDFlib-Lite-7.0.5p3/bind/pdflib/tcl/Makefile	2020-11-18 20:43:08.889366642 +0100
+@@ -11,6 +11,7 @@
+ PDFPEDANTIC	=
+ DEPLIBS		= $(PDFLIBLINK)
+ LIBS		= $(DEPLIBS) $(TCLLIB)
++LDFLAGS         += -avoid-version -shared
+ INCLUDES	= $(PDFLIBINC) $(TCLINCLUDE) -DUSE_INTERP_RESULT
+ 
+ LANG_LIBDIR 	= $(DESTDIR)$(TCLPACKAGEDIR)

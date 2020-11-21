@@ -1,0 +1,14 @@
+--- PDFlib-Lite-7.0.5p3/bind/pdflib/perl/pdflib_pl.c.orig	2012-06-06 13:59:04.000000000 +0200
++++ PDFlib-Lite-7.0.5p3/bind/pdflib/perl/pdflib_pl.c	2020-11-18 17:56:44.360124144 +0100
+@@ -378,10 +378,8 @@
+ #define SWIG_exception(msg)   	croak(msg)
+ #define try     PDF_TRY(p)
+ #define catch   PDF_CATCH(p) { \
+-                char errmsg[1024];\
+-		sprintf(errmsg, "PDFlib Error [%d] %s: %s", PDF_get_errnum(p),\
++		croak("PDFlib Error [%d] %s: %s", PDF_get_errnum(p),\
+ 				    PDF_get_apiname(p), PDF_get_errmsg(p));\
+-		SWIG_exception(errmsg); \
+ 		}
+ 
+ /* }}} */

@@ -1,0 +1,11 @@
+--- PDFlib-Lite-7.0.5p3/configure.in.orig	2012-06-06 13:58:57.000000000 +0200
++++ PDFlib-Lite-7.0.5p3/configure.in	2020-11-18 21:27:03.171762176 +0100
+@@ -751,7 +751,7 @@
+ 	    WITH_PERL=no
+ 	fi
+ 
+-	PERLLIBDIR=`($PERL -e 'use Config; print $Config{sitearchexp};') 2>/dev/null`
++	PERLLIBDIR=`($PERL -e 'use Config; print $Config{vendorarchexp};') 2>/dev/null`
+ 	if test -z "$PERLLIBDIR" -o ! -d "$PERLLIBDIR"; then
+ 	    AC_MSG_RESULT(         unable to determine perl shared library directory)
+ 	fi

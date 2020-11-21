@@ -1,0 +1,13 @@
+Force to build against Tcl 8.6 despite using deprecated API.
+
+--- PDFlib-Lite-7.0.5p3/bind/pdflib/tcl/Makefile.orig	2012-06-06 13:59:04.000000000 +0200
++++ PDFlib-Lite-7.0.5p3/bind/pdflib/tcl/Makefile	2020-11-18 19:08:18.536860593 +0100
+@@ -11,7 +11,7 @@
+ PDFPEDANTIC	=
+ DEPLIBS		= $(PDFLIBLINK)
+ LIBS		= $(DEPLIBS) $(TCLLIB)
+-INCLUDES	= $(PDFLIBINC) $(TCLINCLUDE)
++INCLUDES	= $(PDFLIBINC) $(TCLINCLUDE) -DUSE_INTERP_RESULT
+ 
+ LANG_LIBDIR 	= $(DESTDIR)$(TCLPACKAGEDIR)
+ 

@@ -1,0 +1,25 @@
+--- PDFlib-Lite-7.0.5p3/configure.in.orig	2020-11-21 10:31:33.597288532 +0100
++++ PDFlib-Lite-7.0.5p3/configure.in	2020-11-21 13:28:30.903102986 +0100
+@@ -1332,7 +1332,7 @@
+ 	PDFLIBLINK="\$(top_builddir)/libs/pdflib/.libs/libs_lib$PDFLIBNAME.al"
+ print "UNIVERSAL: .libs/libs_libpdflib.al"
+     else
+-	PDFLIBLINK="\$(top_builddir)/libs/pdflib/libs_lib$PDFLIBNAME\$(LA)"
++	PDFLIBLINK="\$(top_builddir)/libs/pdflib/lib$PDFLIBNAME\$(LA)"
+     fi
+     PDFLIB_LINK="\$(top_builddir)/libs/pdflib/libpdf_\$(LA)"
+     LIBTARGETS="$LIBTARGETS pdflib"
+--- PDFlib-Lite-7.0.5p3/config/mkprogs.inc.in.orig	2020-11-20 21:35:27.446225689 +0100
++++ PDFlib-Lite-7.0.5p3/config/mkprogs.inc.in	2020-11-20 21:50:38.807955086 +0100
+@@ -1,9 +1,9 @@
+ PROGS_BUILD = $(LIBTOOL_CC) $(CC) -c $(CPPFLAGS) $(CFLAGS) $@.c
+ CXXPROGS_BUILD = $(LIBTOOL_CC) $(CXX) -c $(CPPFLAGS) $(CXXFLAGS) \
+ 	$@.cpp $(EXTRA_SOURCES)
+-PROGS_LINK = $(LIBTOOL_LD) $(CC) -static -o $@ $@$(LO) $(LDFLAGS) \
++PROGS_LINK = $(LIBTOOL_LD) $(CC) -o $@ $@$(LO) $(LDFLAGS) \
+ 	$(EXTRA_OBJS) $(LIBS) $(EXTERNALLIBS)
+-CXXPROGS_LINK = $(LIBTOOL_LD) $(CXX) -static -o $@ $@$(LO) \
++CXXPROGS_LINK = $(LIBTOOL_LD) $(CXX) -o $@ $@$(LO) \
+ 	$(CXXFLAGS) $(LDFLAGS) $(EXTRA_OBJS) $(LIBS) $(EXTERNALLIBS)
+ 
+ all::    $(PROGS)

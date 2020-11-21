@@ -1,0 +1,13 @@
+--- PDFlib-Lite-7.0.5p3/configure.in.orig	2020-11-18 21:27:03.171762176 +0100
++++ PDFlib-Lite-7.0.5p3/configure.in	2020-11-18 21:57:20.398584079 +0100
+@@ -896,8 +896,8 @@
+ 	else
+ 	    PYTHONLIBDIR=`cat << EOF | python
+ import sys
+-import string
+-print string.join(filter(lambda x: -1 != string.find(x, 'dynload'), sys.path))
++from distutils import sysconfig
++print sysconfig.get_python_lib(1,0,prefix="$prefix")
+ EOF
+ `
+ 	    if test "$PYTHONLIBDIR" = "" ; then

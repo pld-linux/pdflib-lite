@@ -1,0 +1,11 @@
+--- PDFlib-Lite-7.0.5p3/config/mkmainlib.inc.in.orig	2020-11-19 17:26:48.045119985 +0100
++++ PDFlib-Lite-7.0.5p3/config/mkmainlib.inc.in	2020-11-19 18:24:35.243003229 +0100
+@@ -29,7 +29,7 @@
+ 	@-if test "$(WITH_SHARED)" = "no"; then	\
+ 	    cp .libs/$(MAINLIBNAME) .libs/$(MAINLIBNAME)i;\
+ 	fi
+-	$(LIBTOOL) $(INSTALL_DATA) $(MAINLIBNAME) $(DESTDIR)$(libdir);
++	$(LIBTOOL) --mode=install $(INSTALL_DATA) $(MAINLIBNAME) $(DESTDIR)$(libdir);
+ 	@-if test "$(WITH_SHARED)" = "yes"; then	\
+ 	    $(LIBTOOL) -n --finish $(DESTDIR)$(libdir);\
+ 	else\
