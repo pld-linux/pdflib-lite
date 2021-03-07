@@ -164,7 +164,7 @@ Wiązania Javy do biblioteki PDFlib Lite.
 Summary:	Documentation for Java PDFlib Lite binding
 Summary(pl.UTF-8):	Dokumentacja wiązań Javy do biblioteki PDFlib Lite
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description -n java-pdflib-lite-javadoc
 Documentation for Java PDFlib Lite binding.
