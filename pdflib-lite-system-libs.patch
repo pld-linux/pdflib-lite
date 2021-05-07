@@ -1,6 +1,7 @@
---- PDFlib-Lite-7.0.5p3/configure.in.orig	2020-11-19 21:50:47.889308185 +0100
-+++ PDFlib-Lite-7.0.5p3/configure.in	2020-11-19 22:29:37.650020122 +0100
-@@ -1136,7 +1136,7 @@
+diff -urNp -x '*.orig' PDFlib-Lite-7.0.5p3.org/configure.in PDFlib-Lite-7.0.5p3/configure.in
+--- PDFlib-Lite-7.0.5p3.org/configure.in	2021-05-07 23:10:37.493352323 +0200
++++ PDFlib-Lite-7.0.5p3/configure.in	2021-05-07 23:10:37.633354886 +0200
+@@ -1136,7 +1136,7 @@ if test -d libs/flate ; then
      LIBTARGETS="$LIBTARGETS flate"
  else
      FLATELIBINC=""
@@ -9,8 +10,7 @@
  fi
  AC_SUBST(FLATELIBLINK)
  AC_SUBST(FLATELIBINC)
-@@ -1147,7 +1147,7 @@
-     PNGLIBLINK="\$(top_builddir)/libs/png/libpng\$(LA)"
+@@ -1148,7 +1148,7 @@ if test -d libs/png ; then
      LIBTARGETS="$LIBTARGETS png"
  else
      PNGLIBINC=""
@@ -18,7 +18,8 @@
 +    PNGLIBLINK="-lpng"
  fi
  AC_SUBST(PNGLIBINC)
-@@ -1160,7 +1160,7 @@
+ AC_SUBST(PNGLIBLINK)
+@@ -1160,7 +1160,7 @@ if test -d libs/tiff ; then
      LIBTARGETS="$LIBTARGETS tiff"
  else
      TIFFLIBINC=""
@@ -27,7 +28,7 @@
  fi
  AC_SUBST(TIFFLIBINC)
  AC_SUBST(TIFFLIBLINK)
-@@ -1172,7 +1172,7 @@
+@@ -1172,7 +1172,7 @@ if test -d libs/jpeg ; then
      LIBTARGETS="$LIBTARGETS jpeg"
  else
      JPEGLIBINC=""
@@ -36,7 +37,7 @@
  fi
  AC_SUBST(JPEGLIBINC)
  AC_SUBST(JPEGLIBLINK)
-@@ -1184,7 +1184,7 @@
+@@ -1184,7 +1184,7 @@ if test -d libs/expat ; then
      LIBTARGETS="$LIBTARGETS expat"
  else
      EXPATLIBINC=""
@@ -45,7 +46,7 @@
  fi
  AC_SUBST(EXPATLIBINC)
  AC_SUBST(EXPATLIBLINK)
-@@ -1204,7 +1204,8 @@
+@@ -1204,7 +1204,8 @@ if test "$WITH_OPENSSL" != "no" ; then
      OPENSSLLIBLINK="-L/usr/local/ssl/lib -lcrypto -lssl"
      LIBTARGETS="$LIBTARGETS expat"
    else
@@ -55,7 +56,7 @@
    fi
  fi
  AC_SUBST(OPENSSLLIBINC)
-@@ -1235,7 +1236,8 @@
+@@ -1235,7 +1236,8 @@ if test "$WITH_ICU" = "yes"; then
  	    LIBTARGETS="$LIBTARGETS icutle"
  	fi
      else
@@ -65,7 +66,7 @@
      fi
  fi
  
-@@ -1621,7 +1621,7 @@
+@@ -1619,7 +1621,7 @@ fi
  
  CFLAGS="$CFLAGS $PLATFORM"
  
@@ -74,9 +75,10 @@
  
  if test "$WITH_SHARED" = "no"; then
      dnl We can generate a static lib only, but not a shared
---- PDFlib-Lite-7.0.5p3/libs/pdflib/p_jpeg.c.orig	2012-06-06 13:59:00.000000000 +0200
-+++ PDFlib-Lite-7.0.5p3/libs/pdflib/p_jpeg.c	2020-11-20 18:33:21.408750447 +0100
-@@ -52,7 +52,7 @@
+diff -urNp -x '*.orig' PDFlib-Lite-7.0.5p3.org/libs/pdflib/p_jpeg.c PDFlib-Lite-7.0.5p3/libs/pdflib/p_jpeg.c
+--- PDFlib-Lite-7.0.5p3.org/libs/pdflib/p_jpeg.c	2012-06-06 13:59:00.000000000 +0200
++++ PDFlib-Lite-7.0.5p3/libs/pdflib/p_jpeg.c	2021-05-07 23:10:37.633354886 +0200
+@@ -52,7 +52,7 @@ pdf_cleanup_jpeg(PDF *p, pdf_image *imag
  
  #else
  
@@ -85,7 +87,7 @@
  #include "jpeglib.h"
  
  /*
-@@ -302,7 +302,7 @@
+@@ -302,7 +302,7 @@ pdf_jpeg_pdcread_src(j_decompress_ptr ci
  
      cinfo->src = (struct jpeg_source_mgr *)
              (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
@@ -94,7 +96,7 @@
  
      src = (pdf_src_ptr) cinfo->src;
      src->pub.init_source = pdf_init_JPEG_source;
-@@ -345,7 +345,7 @@
+@@ -345,7 +345,7 @@ pdf_init_JPEG_destination (j_compress_pt
  
      dest->buffer = (JOCTET *)
          (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
@@ -103,7 +105,7 @@
  
      dest->pub.next_output_byte = dest->buffer;
      dest->pub.free_in_buffer = OUTPUT_BUF_SIZE;
-@@ -381,7 +381,7 @@
+@@ -381,7 +381,7 @@ pdf_jpeg_pdcwrite_dest(j_compress_ptr ci
  
      cinfo->dest = (struct jpeg_destination_mgr *)
        (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
@@ -112,9 +114,10 @@
  
      dest = (pdf_dest_ptr) cinfo->dest;
      dest->pub.init_destination = pdf_init_JPEG_destination;
---- PDFlib-Lite-7.0.5p3/libs/pdflib/p_png.c.orig	2012-06-06 13:59:00.000000000 +0200
-+++ PDFlib-Lite-7.0.5p3/libs/pdflib/p_png.c	2020-11-20 20:15:40.512158737 +0100
-@@ -78,7 +78,7 @@
+diff -urNp -x '*.orig' PDFlib-Lite-7.0.5p3.org/libs/pdflib/p_png.c PDFlib-Lite-7.0.5p3/libs/pdflib/p_png.c
+--- PDFlib-Lite-7.0.5p3.org/libs/pdflib/p_png.c	2012-06-06 13:59:00.000000000 +0200
++++ PDFlib-Lite-7.0.5p3/libs/pdflib/p_png.c	2021-05-07 23:10:37.633354886 +0200
+@@ -78,7 +78,7 @@ pdf_data_source_PNG_terminate(PDF *p, PD
  static void
  pdf_png_read_data(png_structp png_ptr, png_bytep data, png_size_t length)
  {
@@ -123,7 +126,7 @@
      char *filename = (char *) pdc_file_name(fp);
  
      if (!PDC_OK_FREAD(fp, data, length))
-@@ -96,14 +96,14 @@
+@@ -96,14 +96,14 @@ pdf_png_read_data(png_structp png_ptr, p
  static void
  pdf_libpng_warning_handler(png_structp png_ptr, png_const_charp message)
  {
@@ -140,7 +143,7 @@
  
      pdc_logg_cond(p->pdc, 5, trc_image, "\tlibpng error: %s\n", message);
  
-@@ -114,7 +114,7 @@
+@@ -114,7 +114,7 @@ pdf_libpng_error_handler(png_structp png
  static void *
  pdf_libpng_malloc(png_structp png_ptr, size_t size)
  {
@@ -149,7 +152,7 @@
  
      return pdc_malloc(p->pdc, size, "libpng");
  }
-@@ -122,7 +122,7 @@
+@@ -122,7 +122,7 @@ pdf_libpng_malloc(png_structp png_ptr, s
  static void
  pdf_libpng_free(png_structp png_ptr, void *mem)
  {
