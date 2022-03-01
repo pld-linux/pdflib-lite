@@ -17,7 +17,7 @@ Summary:	PDFlib - A library for generating PDF on the fly
 Summary(pl.UTF-8):	PDFlib - biblioteka do tworzenia plików PDF w locie
 Name:		pdflib-lite
 Version:	7.0.5p3
-Release:	2
+Release:	3
 License:	free for personal use
 Group:		Libraries
 # originally http://www.pdflib.com/download/pdflib-family/pdflib-lite-7/ but no longer available;
