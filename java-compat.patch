@@ -1,0 +1,11 @@
+--- PDFlib-Lite-7.0.5p3/configure.in~	2022-03-01 13:16:14.000000000 +0100
++++ PDFlib-Lite-7.0.5p3/configure.in	2022-03-01 13:21:08.180134353 +0100
+@@ -165,7 +165,7 @@
+ WITH_LARGE_FILES=no
+ WITH_64BIT=no
+ WITH_UNIVERSAL=no
+-JAVA_COMPATIBILITY="-source 1.4"
++JAVA_COMPATIBILITY="-source 1.6"
+ 
+ case $ac_sys_system in
+     dnl TODO: check if this is still true

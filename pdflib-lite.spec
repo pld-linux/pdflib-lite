@@ -32,6 +32,7 @@ Patch4:		%{name}-python.patch
 Patch5:		%{name}-libtool.patch
 Patch6:		%{name}-system-libs.patch
 Patch7:		%{name}-shared.patch
+Patch8:		java-compat.patch
 URL:		https://www.pdflib.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -224,6 +225,7 @@ Wiązania Tcl-a do biblioteki PDFlib Lite.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %{?with_system_zlib:%{__rm} -r libs/flate}
 %{?with_system_zlib:%{__sed} -i -e '/\/flate\// d' libs/pdflib/Make_objs2.inc}
