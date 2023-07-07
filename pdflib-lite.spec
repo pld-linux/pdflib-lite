@@ -36,6 +36,7 @@ Patch5:		%{name}-libtool.patch
 Patch6:		%{name}-system-libs.patch
 Patch7:		%{name}-shared.patch
 Patch8:		java-compat.patch
+Patch9:		java-paths.patch
 URL:		https://www.pdflib.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -230,6 +231,7 @@ Wiązania Tcl-a do biblioteki PDFlib Lite.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %{?with_system_zlib:%{__rm} -r libs/flate}
 %{?with_system_zlib:%{__sed} -i -e '/\/flate\// d' libs/pdflib/Make_objs2.inc}
@@ -275,7 +277,10 @@ Wiązania Tcl-a do biblioteki PDFlib Lite.
 	--without-tcl
 %endif
 
-%{__make}
+%{__make} \
+	JAVA_EXE="%{java_home}/bin/java" \
+	JAVAC_EXE="%{java_home}/bin/javac" \
+	JAR="%{java_home}/bin/jar"
 
 %if %{with cxx}
 cd bind/pdflib/cpp
@@ -284,7 +289,7 @@ cd ../../..
 %endif
 
 %if %{with java}
-%{__make} -C bind/pdflib/java javadoc
+%{__make} JAVADOC="%{java_home}/bin/javadoc" -C bind/pdflib/java javadoc
 %endif
 
 %if %{with perl}
