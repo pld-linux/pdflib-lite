@@ -9,30 +9,3 @@
  
  case $ac_sys_system in
      dnl TODO: check if this is still true
---- PDFlib-Lite-7.0.5p3/bind/pdflib/java/Makefile.orig	2023-07-07 12:22:30.249421576 +0200
-+++ PDFlib-Lite-7.0.5p3/bind/pdflib/java/Makefile	2023-07-07 12:59:52.953380916 +0200
-@@ -3,10 +3,13 @@
- 
- top_builddir	= ../../..
- MYJAR   = pdflib.jar
--JAVAC   = javac -classpath $(MYJAR):.
-+JAVAC_EXE = javac
-+JAVAC   = $(JAVAC_EXE) -classpath $(MYJAR):.
- COMPILE = $(JAVAC) $(JAVACFLAGS)
--JAVA    = $(LIBTOOL_EXE) java -classpath $(MYJAR):.
-+JAVA_EXE    = java
-+JAVA    = $(LIBTOOL_EXE) $(JAVA_EXE) -classpath $(MYJAR):.
- JAR     = jar
-+JAVADOC     = javadoc
- 
- include ../../../config/mkcommon.inc
- 
-@@ -76,7 +79,7 @@
- javadoc::
- 	$(RM) javadoc
- 	$(MKDIR) javadoc
--	-javadoc -notree -author -version -d javadoc -public \
-+	-$(JAVADOC) -notree -author -version -d javadoc -public \
- 	    pdflib.java PDFlibException.java
- 
- test:: $(LIBNAME) pdflib.jar $(TESTPROGS)
