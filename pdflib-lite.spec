@@ -40,7 +40,7 @@ Patch9:		java-paths.patch
 URL:		https://www.pdflib.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{?with_java:%{?use_jdk:%buildrequires_jdk}%{!?use_jdk:BuildRequires:	jdk >= 1.4}}
+%{?with_java:%buildrequires_jdk}
 %{?with_system_libjpeg:BuildRequires:	libjpeg-devel >= 6b}
 %{?with_system_libpng:BuildRequires:	libpng-devel >= 2:1.2.36}
 %{?with_cxx:BuildRequires:	libstdc++-devel}
