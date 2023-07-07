@@ -13,6 +13,9 @@
 %bcond_with	system_libtiff	# system libtiff library (PDFLib uses modified version)
 %bcond_without	system_zlib	# system ZLib library
 #
+
+%{?with_java:%{?use_default_jdk}}
+
 Summary:	PDFlib - A library for generating PDF on the fly
 Summary(pl.UTF-8):	PDFlib - biblioteka do tworzenia plików PDF w locie
 Name:		pdflib-lite
@@ -36,7 +39,7 @@ Patch8:		java-compat.patch
 URL:		https://www.pdflib.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{?with_java:BuildRequires:	jdk >= 1.4}
+%{?with_java:%{?use_jdk:%buildrequires_jdk}%{!?use_jdk:BuildRequires:	jdk >= 1.4}}
 %{?with_system_libjpeg:BuildRequires:	libjpeg-devel >= 6b}
 %{?with_system_libpng:BuildRequires:	libpng-devel >= 2:1.2.36}
 %{?with_cxx:BuildRequires:	libstdc++-devel}
@@ -45,7 +48,7 @@ BuildRequires:	libtool
 %{?with_perl:BuildRequires:	perl-devel >= 5}
 %{?with_python:BuildRequires:	python-devel >= 2}
 BuildRequires:	rpm-perlprov
-BuildRequires:	rpmbuild(macros) >= 1.754
+BuildRequires:	rpmbuild(macros) >= 2.021
 %{?with_tcl:BuildRequires:	tcl-devel >= 8.2}
 %{?with_system_zlib:BuildRequires:	zlib-devel >= 1.2.3}
 %{?with_system_libjpeg:Requires:	libjpeg >= 6b}
