@@ -1,7 +1,7 @@
 # TODO: php, ruby
 #
 # Conditional build:
-%bcond_without	static_libs	# static library
+%bcond_without	static_libs	# static libraries
 %bcond_without	cxx		# C++ binding
 %bcond_without	java		# Java binding
 %bcond_without	perl		# Perl binding
@@ -249,6 +249,7 @@ Wiązania Tcl-a do biblioteki PDFlib Lite.
 %{__aclocal} --output config/aclocal.m4
 %{__autoconf}
 %configure \
+	PYTHONBIN="%{__python}" \
 	%{!?with_cxx:--disable-cxx} \
 	%{!?with_static_libs:--disable-static} \
 	--with-java=%{?with_java:%{java_home}}%{!?with_java:no} \
